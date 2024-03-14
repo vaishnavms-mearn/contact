@@ -12,7 +12,7 @@ const logic = require('./services/logics')
 
 //4 Connecting the front end application with backend using cors
 emsServer.use(cors({
-    origin:"http://localhost:3000"
+    origin:"https://contact-app-demo.netlify.app/"
 }))
 
 //5 Convert The JSON Data to js and js to JSON using json() method
