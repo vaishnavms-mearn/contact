@@ -5,10 +5,11 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 // Get the database connection string from environment variables
-const DATABASE = process.env.DATABASE;
+const DATABASE_URI = process.env.DATABASE;
+const DATABASE_CONNECT=`${DATABASE_URI}contact`
 
 // Connection string
-mongoose.connect(DATABASE);
+mongoose.connect(DATABASE_CONNECT);
 
 // Model Creation
 const contactSchema = new mongoose.Schema({
