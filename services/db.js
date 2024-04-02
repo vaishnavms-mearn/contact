@@ -1,33 +1,22 @@
-// Import dotenv to load environment variables from .env file
-require('dotenv').config();
+//connection code of node and mongodb
+//1 import mongoose
+const mongoose = require('mongoose')
 
-// Import mongoose
-const mongoose = require('mongoose');
+//connection string
+mongoose.connect('mongodb+srv://vaishnavms9656:luminar@cluster0.pqargr6.mongodb.net/ContactApp?retryWrites=true&w=majority');
 
-// Get the database connection string from environment variables
-const DATABASE_URI = process.env.DATABASE;
-const DATABASE_CONNECT=`${DATABASE_URI}contact`
 
-// Connection string
-mongoose.connect(DATABASE_CONNECT);
 
-// Model Creation
-const contactSchema = new mongoose.Schema({
+
+//model creation
+const contact = mongoose.model('contacts',{
     id: Number,
     name: { firstname: String, lastname: String },
     email: String,
     phone: String,
     address: { city: String, street: String, zipcode: String },
-});
+})
 
-const contact = mongoose.model('contacts', contactSchema);
-
-// Check if the connection is successful
-mongoose.connection.on('connected', () => {
-    console.log('Connected to MongoDB');
-    // Place your code here to execute when the connection is established
-});
-
-module.exports = {
-    contact
-};
+module.exports={
+contact
+}
